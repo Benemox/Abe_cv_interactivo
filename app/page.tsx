@@ -1,16 +1,64 @@
 "use client";
 import {useState} from "react";
 import {motion} from "framer-motion";
-import {Terminal,Code2,Database,Boxes,GitBranch,Mail,Linkedin,ChevronRight} from "lucide-react";
+import {GitBranch,Mail,Linkedin,ChevronRight,ArrowUpRight,ScanEye,Truck} from "lucide-react";
+const projects = [
+  {
+    name: "AvispasIA",
+    category: "Visión artificial · Protección de colmenas",
+    description: "Prototipo para observar la entrada de colmenas, distinguir avispas de abejas y registrar detecciones. La protección de las abejas y la gestión de la incertidumbre guían el desarrollo.",
+    preview: "Demo interactiva del concepto; pendiente de validación con vídeo real.",
+    technologies: ["Python", "OpenCV", "YOLOv5", "ONNX"],
+    url: "https://avispas-ia.vercel.app/",
+    icon: ScanEye,
+  },
+  {
+    name: "Gonabba",
+    category: "Maquinaria · Obras · Transporte",
+    description: "Plataforma para conectar obras, empresas de maquinaria y transportistas. Reúne solicitudes de servicio, disponibilidad, gremios y pagos en una operativa web y móvil.",
+    preview: "Web de presentación del producto y sus principales flujos de trabajo.",
+    technologies: ["Symfony", "React Native / Expo", "Vue", "Stripe"],
+    url: "https://gonabba.vercel.app/",
+    icon: Truck,
+  },
+];
 const skills=["PHP 8.x","Symfony","Laravel","TypeScript","Node","PostgreSQL","Redis","Druid","Docker","AWS","RabbitMQ","Unit Testing","Hexagonal Architecture","DDD","Clean Code","Microservices","Async Messaging","Caching","High Availability"];
 const jobs=[{company:"Nairoo",date:"Sep 2025 — Actualidad",stack:"PHP 8.4 · Laravel · PostgreSQL · Redis · GraphQL",text:"Construcción y evolución del core backend con Arquitectura Hexagonal y DDD. Diseño de casos de uso, entidades, puertos y adaptadores; refactor de legacy e integraciones. Desarrollo del backend de un Channel Manager."},{company:"Up Spain",date:"Feb 2023 — Oct 2025",stack:"PHP 8.2 · Symfony · PostgreSQL · Redis · Elasticsearch · Azure",text:"Arquitectura Hexagonal y DDD, APIs, microservicios Dockerizados y mensajería asíncrona. Integraciones con AS400 y ecosistema Azure."},{company:"SunMedia",date:"Ago 2021 — Feb 2023",stack:"PHP · Symfony · PostgreSQL · Redis · Druid · AWS",text:"Plataformas de gestión, reporting y análisis de costes con foco en rendimiento y escalabilidad. Microservicios, Clean Code y colas asíncronas."}];
 const layers=[["HTTP / API","Controller"],["APPLICATION","Use Case · Command / Query"],["DOMAIN","Entity · Value Object · Domain Service"],["PORTS","Repository · Gateway"],["INFRASTRUCTURE","Doctrine · Redis · RabbitMQ"]];
-export default function Home(){const [mode,setMode]=useState<"recruiter"|"developer">("recruiter"); const [cmd,setCmd]=useState("help"); const output:Record<string,string>={help:"Comandos: skills · experience · architecture · contact",skills:"PHP / Symfony / Laravel / PostgreSQL / Redis / Docker / RabbitMQ / DDD",experience:"Nairoo → Up Spain → SunMedia",architecture:"HTTP → Application → Domain → Ports → Infrastructure",contact:"LinkedIn: /in/abelabbasi"}; return <main>
+export default function Home(){const [mode,setMode]=useState<"recruiter"|"developer">("recruiter"); const [cmd,setCmd]=useState("help"); const output:Record<string,string>={help:"Comandos: skills · experience · projects · architecture · contact",skills:"PHP / Symfony / Laravel / PostgreSQL / Redis / Docker / RabbitMQ / DDD",experience:"Nairoo → Up Spain → SunMedia",projects:"AvispasIA · Gonabba — trabajos en desarrollo. Explora sus webs en la sección de proyectos.",architecture:"HTTP → Application → Domain → Ports → Infrastructure",contact:"LinkedIn: /in/abelabbasi"}; return <main>
 <nav><b>AA<span>.</span></b><div className="mode"><button className={mode==="recruiter"?"active":""} onClick={()=>setMode("recruiter")}>Recruiter</button><button className={mode==="developer"?"active":""} onClick={()=>setMode("developer")}>Developer</button></div></nav>
-<section className="hero"><motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}><p className="eyebrow">BACKEND DEVELOPER · MADRID</p><h1>Construyo el backend<br/>que <em>no se ve</em>,<br/>pero lo sostiene todo.</h1><p className="lead">Soy <strong>Abel Abbasi</strong>. Diseño sistemas mantenibles, lógica de dominio clara e integraciones fiables con PHP, Symfony y Laravel.</p><div className="actions"><a href="#experience">Explorar experiencia <ChevronRight size={18}/></a><a className="ghost" href="https://www.linkedin.com/in/abelabbasi">LinkedIn <Linkedin size={17}/></a></div></motion.div><div className="terminal"><div className="termbar"><i/><i/><i/><span>abel@backend:~</span></div><div className="termbody"><p><span>abel@portfolio</span>:~$ {cmd}</p><p className="out">{output[cmd]||"Comando no encontrado. Prueba: help"}</p><div className="commands">{Object.keys(output).map(x=><button key={x} onClick={()=>setCmd(x)}>{x}</button>)}</div><p><span>abel@portfolio</span>:~$ <b className="cursor">_</b></p></div></div></section>
+<section className="hero"><motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}><p className="eyebrow">BACKEND DEVELOPER · MADRID</p><h1>Construyo el backend<br/>que <em>no se ve</em>,<br/>pero lo sostiene todo.</h1><p className="lead">Soy <strong>Abel Abbasi</strong>. Diseño sistemas mantenibles, lógica de dominio clara e integraciones fiables con PHP, Symfony y Laravel.</p><div className="actions"><a href="#experience">Explorar experiencia <ChevronRight size={18}/></a><a className="ghost" href="#projects">Ver proyectos <ChevronRight size={18}/></a><a className="ghost" href="https://www.linkedin.com/in/abelabbasi">LinkedIn <Linkedin size={17}/></a></div></motion.div><div className="terminal"><div className="termbar"><i/><i/><i/><span>abel@backend:~</span></div><div className="termbody"><p><span>abel@portfolio</span>:~$ {cmd}</p><p className="out">{output[cmd]||"Comando no encontrado. Prueba: help"}</p><div className="commands">{Object.keys(output).map(x=><button key={x} onClick={()=>setCmd(x)}>{x}</button>)}</div><p><span>abel@portfolio</span>:~$ <b className="cursor">_</b></p></div></div></section>
 <section className="stats"><div><b>4+</b><span>años backend</span></div><div><b>3</b><span>empresas tech</span></div><div><b>19</b><span>skills clave</span></div><div><b>∞</b><span>curiosidad</span></div></section>
 <section id="skills"><p className="eyebrow">01 / STACK</p><h2>Mi caja de herramientas.</h2><div className="chips">{skills.map((s,i)=><motion.span whileHover={{y:-3}} key={s} className={i<6?"hot":""}>{s}</motion.span>)}</div></section>
 <section id="experience"><p className="eyebrow">02 / EXPERIENCIA</p><h2>Código en producción.</h2><div className="timeline">{jobs.map((j,i)=><motion.article initial={{opacity:0,x:-20}} whileInView={{opacity:1,x:0}} viewport={{once:true}} key={j.company}><div className="dot"/><small>{j.date}</small><h3>{j.company}</h3><code>{j.stack}</code><p>{j.text}</p>{mode==="developer"&&<div className="devdetail"><GitBranch size={15}/> Domain-first · Tests · SOLID · Integraciones</div>}</motion.article>)}</div></section>
-<section id="architecture" className="arch"><p className="eyebrow">03 / CÓMO PIENSO EL SOFTWARE</p><h2>El dominio en el centro.</h2><p className="intro">No organizo código por framework. Separo responsabilidades para que el negocio pueda evolucionar sin arrastrar la infraestructura.</p><div className="layers">{layers.map((l,i)=><motion.div whileHover={{scale:1.015}} key={l[0]}><span>0{i+1}</span><b>{l[0]}</b><p>{l[1]}</p></motion.div>)}</div></section>
-<section className="about"><div><p className="eyebrow">04 / SOBRE MÍ</p><h2>Resolver problemas<br/>antes que escribir código.</h2></div><p>Me centro en construir sistemas mantenibles y resolver problemas reales de producto. Disfruto diseñando lógica de dominio clara, mejorando codebases existentes y conectando sistemas de forma fiable.<br/><br/>Fuera del código: viajar, descubrir culturas y todo lo relacionado con el espacio.</p></section>
+<section id="projects" className="projects" aria-labelledby="projects-title">
+  <p className="eyebrow">03 / PROYECTOS PROPIOS</p>
+  <h2 id="projects-title">Trabajos en desarrollo.</h2>
+  <p className="intro">Ideas que estoy convirtiendo en producto. Explora sus webs y el trabajo que hay detrás.</p>
+  <div className="project-grid">
+    {projects.map(({icon: Icon, ...project}) => (
+      <article className="project-card" key={project.name}>
+        <div className="project-topline">
+          <Icon size={28} aria-hidden="true" />
+          <span className="project-status">En desarrollo</span>
+        </div>
+        <p className="project-category">{project.category}</p>
+        <h3>{project.name}</h3>
+        <p className="project-description">{project.description}</p>
+        <ul className="project-technologies" aria-label={`Tecnologías de ${project.name}`}>
+          {project.technologies.map(technology => <li key={technology}>{technology}</li>)}
+        </ul>
+        <div className="project-preview">
+          <p>{project.preview}</p>
+          <a href={project.url} target="_blank" rel="noopener noreferrer">
+            Visitar web de {project.name} <ArrowUpRight size={18} aria-hidden="true" />
+            <span className="sr-only"> (se abre en una pestaña nueva)</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<section id="architecture" className="arch"><p className="eyebrow">04 / CÓMO PIENSO EL SOFTWARE</p><h2>El dominio en el centro.</h2><p className="intro">No organizo código por framework. Separo responsabilidades para que el negocio pueda evolucionar sin arrastrar la infraestructura.</p><div className="layers">{layers.map((l,i)=><motion.div whileHover={{scale:1.015}} key={l[0]}><span>0{i+1}</span><b>{l[0]}</b><p>{l[1]}</p></motion.div>)}</div></section>
+<section className="about"><div><p className="eyebrow">05 / SOBRE MÍ</p><h2>Resolver problemas<br/>antes que escribir código.</h2></div><p>Me centro en construir sistemas mantenibles y resolver problemas reales de producto. Disfruto diseñando lógica de dominio clara, mejorando codebases existentes y conectando sistemas de forma fiable.<br/><br/>Fuera del código: viajar, descubrir culturas y todo lo relacionado con el espacio.</p></section>
 <footer><div><h2>¿Construimos algo?</h2><p>Disponible para hablar de backend, arquitectura y nuevos retos.</p></div><div className="footlinks"><a href="mailto:abelabbasi@hotmail.com"><Mail size={17}/> Email</a><a href="https://www.linkedin.com/in/abelabbasi"><Linkedin size={17}/> LinkedIn</a></div><small>© 2026 Abel Abbasi · Built with Next.js</small></footer></main>}

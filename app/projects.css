@@ -1,0 +1,148 @@
+.actions {
+  flex-wrap: wrap;
+}
+
+.projects {
+  scroll-margin-top: 24px;
+}
+
+.projects > .intro {
+  max-width: 640px;
+  margin: -25px 0 36px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 30px;
+  background: #0e1215;
+  border: 1px solid #293137;
+  border-radius: 12px;
+}
+
+.project-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+  color: #74f7a7;
+}
+
+.project-status {
+  padding: 7px 10px;
+  border: 1px solid #514329;
+  border-radius: 6px;
+  background: #211b12;
+  color: #f0c477;
+  font-size: .875rem;
+}
+
+.project-category {
+  margin: 0 0 10px;
+  color: #aab2b8;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+.project-description {
+  color: #aab2b8;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 18px 0 24px;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 28px;
+  list-style: none;
+}
+
+.project-technologies li {
+  padding: 7px 9px;
+  background: #151c20;
+  border: 1px solid #293137;
+  border-radius: 5px;
+  color: #c5ccd0;
+  font: .875rem/1.4 monospace;
+}
+
+.project-preview {
+  border-top: 1px solid #293137;
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.project-preview p {
+  margin: 0 0 16px;
+  color: #aab2b8;
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+.project-preview a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #74f7a7;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.project-preview a svg {
+  flex-shrink: 0;
+}
+
+.project-preview a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.project-preview a:focus-visible,
+.actions a:focus-visible {
+  outline: 2px solid #74f7a7;
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 24px;
+  }
+}
