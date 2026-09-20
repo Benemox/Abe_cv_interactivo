@@ -1,7 +1,7 @@
 "use client";
 import {useState} from "react";
 import {motion} from "framer-motion";
-import {GitBranch,Mail,Linkedin,ChevronRight,ArrowUpRight,ScanEye,Truck} from "lucide-react";
+import {GitBranch,Mail,Linkedin,ChevronRight,ArrowUpRight,ScanEye,Truck,House} from "lucide-react";
 const projects = [
   {
     name: "AvispasIA",
@@ -21,11 +21,20 @@ const projects = [
     url: "https://gonabba.vercel.app/",
     icon: Truck,
   },
+  {
+    name: "Casa en orden",
+    category: "Autopromoción · Documentación de obra",
+    description: "Aplicación web para organizar documentos, trámites, fechas e importes al construir una vivienda en España, desde la compra del terreno hasta entrar a vivir.",
+    preview: "Portada de producto y demo funcional con 8 etapas, 34 trámites y orientación para las 17 comunidades autónomas.",
+    technologies: ["JavaScript", "IndexedDB", "GitHub", "Vercel"],
+    url: "https://registro-de-obra.vercel.app/",
+    icon: House,
+  },
 ];
 const skills=["PHP 8.x","Symfony","Laravel","TypeScript","Node","PostgreSQL","Redis","Druid","Docker","AWS","RabbitMQ","Unit Testing","Hexagonal Architecture","DDD","Clean Code","Microservices","Async Messaging","Caching","High Availability"];
 const jobs=[{company:"Nairoo",date:"Sep 2025 — Actualidad",stack:"PHP 8.4 · Laravel · PostgreSQL · Redis · GraphQL",text:"Construcción y evolución del core backend con Arquitectura Hexagonal y DDD. Diseño de casos de uso, entidades, puertos y adaptadores; refactor de legacy e integraciones. Desarrollo del backend de un Channel Manager."},{company:"Up Spain",date:"Feb 2023 — Oct 2025",stack:"PHP 8.2 · Symfony · PostgreSQL · Redis · Elasticsearch · Azure",text:"Arquitectura Hexagonal y DDD, APIs, microservicios Dockerizados y mensajería asíncrona. Integraciones con AS400 y ecosistema Azure."},{company:"SunMedia",date:"Ago 2021 — Feb 2023",stack:"PHP · Symfony · PostgreSQL · Redis · Druid · AWS",text:"Plataformas de gestión, reporting y análisis de costes con foco en rendimiento y escalabilidad. Microservicios, Clean Code y colas asíncronas."}];
 const layers=[["HTTP / API","Controller"],["APPLICATION","Use Case · Command / Query"],["DOMAIN","Entity · Value Object · Domain Service"],["PORTS","Repository · Gateway"],["INFRASTRUCTURE","Doctrine · Redis · RabbitMQ"]];
-export default function Home(){const [mode,setMode]=useState<"recruiter"|"developer">("recruiter"); const [cmd,setCmd]=useState("help"); const output:Record<string,string>={help:"Comandos: skills · experience · projects · architecture · contact",skills:"PHP / Symfony / Laravel / PostgreSQL / Redis / Docker / RabbitMQ / DDD",experience:"Nairoo → Up Spain → SunMedia",projects:"AvispasIA · Gonabba — trabajos en desarrollo. Explora sus webs en la sección de proyectos.",architecture:"HTTP → Application → Domain → Ports → Infrastructure",contact:"LinkedIn: /in/abelabbasi"}; return <main>
+export default function Home(){const [mode,setMode]=useState<"recruiter"|"developer">("recruiter"); const [cmd,setCmd]=useState("help"); const output:Record<string,string>={help:"Comandos: skills · experience · projects · architecture · contact",skills:"PHP / Symfony / Laravel / PostgreSQL / Redis / Docker / RabbitMQ / DDD",experience:"Nairoo → Up Spain → SunMedia",projects:"AvispasIA · Gonabba · Casa en orden — trabajos en desarrollo. Explora sus webs en la sección de proyectos.",architecture:"HTTP → Application → Domain → Ports → Infrastructure",contact:"LinkedIn: /in/abelabbasi"}; return <main>
 <nav><b>AA<span>.</span></b><div className="mode"><button className={mode==="recruiter"?"active":""} onClick={()=>setMode("recruiter")}>Recruiter</button><button className={mode==="developer"?"active":""} onClick={()=>setMode("developer")}>Developer</button></div></nav>
 <section className="hero"><motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}><p className="eyebrow">BACKEND DEVELOPER · MADRID</p><h1>Construyo el backend<br/>que <em>no se ve</em>,<br/>pero lo sostiene todo.</h1><p className="lead">Soy <strong>Abel Abbasi</strong>. Diseño sistemas mantenibles, lógica de dominio clara e integraciones fiables con PHP, Symfony y Laravel.</p><div className="actions"><a href="#experience">Explorar experiencia <ChevronRight size={18}/></a><a className="ghost" href="#projects">Ver proyectos <ChevronRight size={18}/></a><a className="ghost" href="https://www.linkedin.com/in/abelabbasi">LinkedIn <Linkedin size={17}/></a></div></motion.div><div className="terminal"><div className="termbar"><i/><i/><i/><span>abel@backend:~</span></div><div className="termbody"><p><span>abel@portfolio</span>:~$ {cmd}</p><p className="out">{output[cmd]||"Comando no encontrado. Prueba: help"}</p><div className="commands">{Object.keys(output).map(x=><button key={x} onClick={()=>setCmd(x)}>{x}</button>)}</div><p><span>abel@portfolio</span>:~$ <b className="cursor">_</b></p></div></div></section>
 <section className="stats"><div><b>4+</b><span>años backend</span></div><div><b>3</b><span>empresas tech</span></div><div><b>19</b><span>skills clave</span></div><div><b>∞</b><span>curiosidad</span></div></section>
